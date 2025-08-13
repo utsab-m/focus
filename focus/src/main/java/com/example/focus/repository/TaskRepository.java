@@ -1,7 +1,7 @@
-package repository;
+package com.example.focus.repository;
 
 
-import model.Task;
+import com.example.focus.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
