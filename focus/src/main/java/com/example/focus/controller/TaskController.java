@@ -1,8 +1,6 @@
 package com.example.focus.controller;
 
 import com.example.focus.dto.TaskDto;
-import lombok.AllArgsConstructor;
-import com.example.focus.mapper.TaskMapper;
 import com.example.focus.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,30 +11,34 @@ import com.example.focus.service.TaskService;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/tasks")
 public class TaskController {
     @Autowired
     private TaskService taskService;
 
     @GetMapping
-    // http://localhost:5000/tasks/
+    // http://localhost:5000/api/tasks/
     public ResponseEntity<List<TaskDto>> getAllTasks() {
         List<TaskDto> tasks = taskService.getAllTasks();
         return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
-    @PutMapping
-    // http://localhost:3000/tasks
+    @GetMapping("/{id}")
+    // http://localhost:5000/api/tasks/{id}
+    public ResponseEntity<TaskDto> getTaskById(@PathVariable Long id) {
+        TaskDto taskDto = taskService.getTaskById(id);
+        return new ResponseEntity<>(taskDto, HttpStatus.OK);
+    }
+
+    @PostMapping
+    // http://localhost:3000/api/tasks
     public ResponseEntity<TaskDto> createTask(@RequestBody Task task) {
-        Task savedTask = taskService.createTask(task);
-        TaskDto savedTaskDto = TaskMapper.toDto(savedTask);
+        TaskDto savedTaskDto = taskService.createTask(task);
         return new ResponseEntity<>(savedTaskDto, HttpStatus.CREATED);
     }
 
-//    @GetMapping
-//
-//    @PatchMapping
-//
-//    @PostMapping
-//
-//    @DeleteMapping
+    @PatchMapping("/{id}")
+    public void editTask(@PathVariable Long id) {
+
+    }
 }

@@ -19,8 +19,9 @@ public class TaskImpl implements TaskService {
     private TaskRepository taskRepository;
 
     @Override
-    public Task createTask(Task task) {
-        return taskRepository.save(task);
+    public TaskDto createTask(Task task) {
+        Task savedTask = taskRepository.save(task);
+        return TaskMapper.toDto(savedTask);
     }
 
     @Override
@@ -30,11 +31,17 @@ public class TaskImpl implements TaskService {
                 .map(TaskMapper::toDto)
                 .collect(Collectors.toList());
     }
-//
-//    @Override
-//    public void editTask(Task task) {
-//
-//    }
+
+    @Override
+    public TaskDto getTaskById(Long id) {
+        Task task = taskRepository.getReferenceById(id);
+        return TaskMapper.toDto(task);
+    }
+
+    @Override
+    public void updateTask(Task task) {
+        taskRepository.save(task);
+    }
 //
 //    @Override
 //    public void deleteTask(Task task) {
