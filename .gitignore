@@ -1,2 +1,4 @@
 focus/src/main/resources/application.properties
 focus/src/main/resources/application.properties
+*.properties
+focus/src/main/resources/application.properties
