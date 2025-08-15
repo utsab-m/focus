@@ -10,6 +10,7 @@ import com.example.focus.service.TaskService;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {
