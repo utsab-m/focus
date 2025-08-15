@@ -38,7 +38,16 @@ public class TaskController {
     }
 
     @PatchMapping("/{id}")
-    public void editTask(@PathVariable Long id) {
+    // http://localhost:3000/api/tasks/{id}
+    public ResponseEntity<TaskDto> updateTask(@PathVariable Long id, @RequestBody Task task) {
+        TaskDto taskDto = taskService.updateTask(id, task);
+        return new ResponseEntity<>(taskDto, HttpStatus.OK);
+    }
 
+    @DeleteMapping("/{id}")
+    // http://localhost:3000/api/tasks/{id}
+    public ResponseEntity<TaskDto> deleteTask(@PathVariable Long id) {
+        TaskDto taskDto = taskService.deleteTask(id);
+        return new ResponseEntity<>(taskDto, HttpStatus.OK);
     }
 }

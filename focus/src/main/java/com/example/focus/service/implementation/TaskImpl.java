@@ -1,6 +1,7 @@
 package com.example.focus.service.implementation;
 
 import com.example.focus.dto.TaskDto;
+import com.example.focus.exception.ResourceNotFoundException;
 import lombok.AllArgsConstructor;
 import com.example.focus.mapper.TaskMapper;
 import com.example.focus.model.Task;
@@ -39,14 +40,21 @@ public class TaskImpl implements TaskService {
     }
 
     @Override
-    public void updateTask(Task task) {
-        taskRepository.save(task);
+    public TaskDto updateTask(Long id, Task task) {
+        Task existingTask = taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No task exists with that ID"));
+        existingTask.setCompleted(task.getCompleted());
+        existingTask.setName(task.getName());
+        existingTask.setDescription(task.getDescription());
+        taskRepository.save(existingTask);
+        return TaskMapper.toDto(existingTask);
     }
-//
-//    @Override
-//    public void deleteTask(Task task) {
-//
-//    }
+
+    @Override
+    public TaskDto deleteTask(Long id) {
+        Task task = taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No task exists with that ID"));
+        taskRepository.deleteById(id);
+        return TaskMapper.toDto(task);
+    }
 
 
 }
