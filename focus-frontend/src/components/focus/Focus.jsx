@@ -1,6 +1,6 @@
 const Focus = () => {
     return (
-        <div class='center'>
+        <div class=''>
             <span>Tasks</span>
         </div>
     )
