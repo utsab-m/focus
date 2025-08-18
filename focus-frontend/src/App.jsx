@@ -1,6 +1,7 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Header from '/components/header/Header'
+import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
+import Focus from './components/focus/Focus'
 
 function App() {
 
@@ -8,7 +9,7 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
-
+        <Focus />
         <Footer />
       </BrowserRouter>
     </>
