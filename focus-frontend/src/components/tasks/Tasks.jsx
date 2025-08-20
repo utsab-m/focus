@@ -1,6 +1,6 @@
 const Tasks = () => {
     return (
-        <div class="dark:bg-gray-500">
+        <div class="text-center text-gray-500 dark:bg-gray-800">
             <span>Tasks</span>
         </div>
     )
