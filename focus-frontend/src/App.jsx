@@ -8,9 +8,11 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
-        <Tasks />
-        <Footer />
+        <div class="flex flex-col h-screen">
+          <Header />
+          <Tasks />
+          <Footer />
+        </div>
       </BrowserRouter>
     </>
   )

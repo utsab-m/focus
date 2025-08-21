@@ -3,8 +3,8 @@ import ListTasks from "./ListTasks"
 const Tasks = () => {
 
     return (
-        <div class="text-center text-gray-500 dark:bg-gray-800">
-            <span>Tasks</span>
+        <div class="flex-grow text-center text-white dark:bg-gray-800">
+            <span class="text-4xl">Tasks</span>
             <ListTasks />
         </div>
     )
