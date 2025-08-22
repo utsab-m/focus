@@ -1,6 +1,7 @@
 import { listTasks } from "../../services/TaskService";
 import { useEffect, useState } from "react";
 import AddTask from "./AddTask";
+import Task from "./Task.jsx";
 
 const ListTasks = () => {
     const [tasks, setTasks] = useState([]);
@@ -19,16 +20,9 @@ const ListTasks = () => {
 
     return (
         <div>
-            <div>
-                {tasks.map(task =>
-                    <div>
-                        {task.id};
-                    </div>
-                )}
-            </div>
-            <div>
-                <AddTask />
-            </div>
+            {tasks.map(task =>
+                <Task task={task} />
+            )}
         </div>
     )
 } 

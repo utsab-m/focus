@@ -1,3 +1,4 @@
+import AddTask from "./AddTask"
 import ListTasks from "./ListTasks"
 
 const Tasks = () => {
@@ -6,6 +7,7 @@ const Tasks = () => {
         <div class="flex-grow text-center text-white dark:bg-gray-800">
             <span class="text-4xl">Tasks</span>
             <ListTasks />
+            <AddTask />
         </div>
     )
 }
