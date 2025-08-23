@@ -7,7 +7,7 @@ function addTask() {
 
 const AddTask = () => {
     return (
-        <button class="mt-2 w-35 h-12.5 bg-green-500 hover:bg-green-700" onClick={addTask}>
+        <button class="mt-2 w-35 h-12.5 bg-green-500 hover:bg-green-700 rounded-lg" onClick={addTask}>
             Add Task
         </button>
     )
