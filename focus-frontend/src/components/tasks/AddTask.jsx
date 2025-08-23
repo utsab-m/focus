@@ -1,11 +1,13 @@
 import ErrorBoundary from "../error/ErrorBoundary";
 import { createTask } from "../../services/TaskService";
-
-function addTask() {
-
-}
+import { useState } from "react";
 
 const AddTask = () => {
+
+    const toggleAddTask = () => {
+
+    }
+
     return (
         <button class="mt-2 w-35 h-12.5 bg-green-500 hover:bg-green-700 rounded-lg" onClick={addTask}>
             Add Task
