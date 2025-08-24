@@ -14,7 +14,7 @@ public class Task {
     private Long id;
 
     @Column(name = "completed")
-    private Boolean completed;
+    private Boolean completed = false;
 
     @Column(name = "name", nullable=false)
     private String name;
