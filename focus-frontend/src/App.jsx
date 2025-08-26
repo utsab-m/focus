@@ -12,14 +12,17 @@ function App() {
     <>
       <ErrorBoundary>
         <BrowserRouter>
+          <Header />
           <Routes>
             {/* http://localhost:5173 */}
             <Route path="/" element={<MainPage />}></Route>
+            {/* http://localhost:5173/login */}
             <Route path="/login" element={<LoginPage />}></Route>
+            {/* http://localhost:5173/signup */}
             <Route path="/signup"></Route>
             
           </Routes>
-          
+          <Footer />
         </BrowserRouter>
 
       </ErrorBoundary>
