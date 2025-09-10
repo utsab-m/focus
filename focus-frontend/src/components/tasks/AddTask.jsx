@@ -12,7 +12,7 @@ function toggleAddTaskMenu() {
 
 function addTaskMenu() {
     return (
-        <div class="bg-blue-400">
+        <div className="bg-blue-400">
             Add Task
         </div>
     )
