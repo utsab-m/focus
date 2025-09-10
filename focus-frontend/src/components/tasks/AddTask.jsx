@@ -23,7 +23,7 @@ const AddTask = () => {
     
 
     return (
-        <button class="mt-2 w-35 h-12.5 bg-green-500 hover:bg-green-700 rounded-lg" onClick={toggleAddTaskMenu}>
+        <button className="mt-2 w-35 h-12.5 bg-green-500 hover:bg-green-700 rounded-lg" onClick={toggleAddTaskMenu}>
             Add Task
         </button>
     )
