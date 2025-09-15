@@ -2,7 +2,7 @@ import Tasks from "../components/tasks/Tasks"
 
 const MainPage = () => {
     return (
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col">
             <Tasks />
         </div>
     )
