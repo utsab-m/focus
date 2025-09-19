@@ -4,14 +4,54 @@ import { useState } from "react";
 const AddTask = () => {
 
     const [showAddTaskMenu, setShowAddTaskMenu] = useState(false);
-    const [completed, setCompleted] = useState();
-    const [name, setName] = useState();
-    const [description, setDescription] = useState();
+    const [formData, setFormData] = useState({
+        name: "",
+        description: ""
+    });
+    const [errors, setErrors] = useState({});
 
     function toggleAddTaskMenu() {
         setShowAddTaskMenu(!showAddTaskMenu);
         console.log(showAddTaskMenu)
+
+        if (showAddTaskMenu) {
+            setFormData({
+                name: "",
+                description: ""
+            });
+            setErrors({});
+        }
     }
+
+    const validateForm = () => {
+        const newErrors = {};
+
+        if (!formData.name.trim()) {
+            newErrors.name = "Name is required";
+        }
+
+        if (!formData.description.trim()) {
+            newErrors.description = "Description is required";
+        }
+
+        return Object.keys(newErrors).length === 0;
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (validateForm()) {
+            createTask(formData).then((response) => {
+                console.log(response.data);
+            }).catch(error => {
+                console.log(error);
+            });
+            console.log('Form data: ', formData);
+            setFormData({name: '', description: ''});
+            setErrors({});
+            setShowAddTaskMenu(false);
+        }
+    };
 
     return (
         <>
@@ -25,10 +65,13 @@ const AddTask = () => {
                         <form>
                             <label for="name">Name:</label>
                             <input className="ml-1 border-blue-500 border-4 p-2" type="text" id="name" name="name"></input>
+                            <br></br>
+                            <label for="description">Description:</label>
+                            <input className="ml-1 mt-2 border-blue-500 border-4 p-2" type="text" id="description" name="description"></input>
                         </form>
                         <div className="flex justify-center mt-4 space-x-4">
-                            <button className="bg-green-500 p-3 rounded-lg">Cancel</button>
-                            <button className="bg-green-500 p-3 rounded-lg">Save</button>
+                            <button className="bg-green-500 hover:bg-green-700 p-3 rounded-lg" onClick={toggleAddTaskMenu}>Cancel</button>
+                            <button className="bg-green-500 hover:bg-green-700 p-3 rounded-lg">Save</button>
                         </div>
                     </div>
                 </div>
