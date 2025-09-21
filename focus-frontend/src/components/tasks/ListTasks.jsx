@@ -1,5 +1,6 @@
 import { listTasks } from "../../services/TaskService";
 import { useEffect, useState } from "react";
+import { deleteTask } from "../../services/TaskService";
 import AddTask from "./AddTask";
 import Task from "./Task.jsx";
 
@@ -18,10 +19,18 @@ const ListTasks = () => {
         })
     }
 
+    function handleDeleteTask(taskId) {
+        deleteTask(taskId).then(() => {
+            getAllTasks();
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+
     return (
         <div id="tasksList">
             {tasks.map(task =>
-                <Task task={task} />
+                <Task task={task} onDelete={handleDeleteTask} />
             )}
         </div>
     )

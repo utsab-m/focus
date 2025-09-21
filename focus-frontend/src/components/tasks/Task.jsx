@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { updateTask } from "../../services/TaskService";
 
-const Task = ({task}) => {
+const Task = ({task, onDelete}) => {
 
     const [completed, setCompleted] = useState(task.completed);
 
@@ -9,6 +9,10 @@ const Task = ({task}) => {
         setCompleted(!completed);
         task.completed = completed;
         console.log(updateTask(task.id, task));
+    }
+
+    function handleDeleteTask() {
+        onDelete(task.id);
     }
 
     return (
@@ -21,6 +25,9 @@ const Task = ({task}) => {
                 <span className="text-lg font-semibold ">{task.name}</span>
                 <span className="text-sm">{task.description}</span>
             </div>
+            <button className="bg-transparent ml-8" onClick={handleDeleteTask}>
+                <img src="https://static.vecteezy.com/system/resources/previews/021/352/964/non_2x/trash-icon-recycle-and-trash-sign-symbol-icon-free-png.png" width="50" height="50"></img>
+            </button>
         </div>
     )
 };

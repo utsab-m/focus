@@ -13,7 +13,7 @@ public class Task {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "completed")
+    @Column(name = "completed", nullable=false)
     private Boolean completed = false;
 
     @Column(name = "name", nullable=false)
