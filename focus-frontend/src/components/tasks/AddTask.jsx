@@ -39,6 +39,20 @@ const AddTask = () => {
 
     const handleInputChange = (e) => {
         console.log(e);
+
+        const {name, value} = e.target;
+        
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+
+        if (errors[name] && value.trim()) {
+            setErrors({
+                ...errors,
+                [name]: ""
+            });
+        }
     }
 
     const handleSubmit = (e) => {
@@ -51,9 +65,14 @@ const AddTask = () => {
                 setFormData({name: '', description: ''});
                 setErrors({});
                 setShowAddTaskMenu(false);
+
+                onTaskAdded();
             }).catch(error => {
                 console.log(error);
             });
+        } else {
+            setErrors(newErrors);
+            return;
         }
     };
 
@@ -66,12 +85,12 @@ const AddTask = () => {
                 <div className="fixed inset-0 flex items-center justify-center z-50">
                     <div className="bg-gray-700 p-6 rounded-lg shadow-lg w-256">
                         <h2 className="text-2xl text-white mb-4">Add New Task</h2>
-                        <form>
+                        <form onSubmit={handleSubmit} >
                             <label htmlFor="name">Name:</label>
-                            <input className="ml-1 border-blue-500 border-4 p-2" type="text" id="name" name="name"></input>
+                            <input className="ml-1 border-blue-500 border-4 p-2" type="text" id="name" name="name" onChange={handleInputChange}></input>
                             <br></br>
                             <label htmlFor="description">Description:</label>
-                            <input className="ml-1 mt-2 border-blue-500 border-4 p-2" type="text" id="description" name="description"></input>
+                            <input className="ml-1 mt-2 border-blue-500 border-4 p-2" type="text" id="description" name="description" onChange={handleInputChange}></input>
                         </form>
                         <div className="flex justify-center mt-4 space-x-4">
                             <button className="bg-green-500 hover:bg-green-700 p-3 rounded-lg" onClick={toggleAddTaskMenu}>Cancel</button>
