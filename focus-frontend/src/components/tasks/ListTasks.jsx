@@ -27,12 +27,20 @@ const ListTasks = () => {
         });
     }
 
+    function handleAddTask() {
+        getAllTasks();
+    }
+
     return (
-        <div id="tasksList">
-            {tasks.map(task =>
-                <Task task={task} onDelete={handleDeleteTask} />
-            )}
-        </div>
+        <>
+            <div id="tasksList">
+                {tasks.map(task =>
+                    <Task task={task} onDelete={handleDeleteTask} />
+                )}
+            </div>
+            <AddTask onAdd={handleAddTask} />
+        </>
+        
     )
 } 
 

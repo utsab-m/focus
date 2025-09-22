@@ -37,19 +37,23 @@ const AddTask = () => {
         return Object.keys(newErrors).length === 0;
     }
 
+    const handleInputChange = (e) => {
+        console.log(e);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
         if (validateForm()) {
             createTask(formData).then((response) => {
-                console.log(response.data);
+                console.log("Task created: ", response.data);
+                console.log("Form data: ", formData);
+                setFormData({name: '', description: ''});
+                setErrors({});
+                setShowAddTaskMenu(false);
             }).catch(error => {
                 console.log(error);
             });
-            console.log('Form data: ', formData);
-            setFormData({name: '', description: ''});
-            setErrors({});
-            setShowAddTaskMenu(false);
         }
     };
 
@@ -63,15 +67,15 @@ const AddTask = () => {
                     <div className="bg-gray-700 p-6 rounded-lg shadow-lg w-256">
                         <h2 className="text-2xl text-white mb-4">Add New Task</h2>
                         <form>
-                            <label for="name">Name:</label>
+                            <label htmlFor="name">Name:</label>
                             <input className="ml-1 border-blue-500 border-4 p-2" type="text" id="name" name="name"></input>
                             <br></br>
-                            <label for="description">Description:</label>
+                            <label htmlFor="description">Description:</label>
                             <input className="ml-1 mt-2 border-blue-500 border-4 p-2" type="text" id="description" name="description"></input>
                         </form>
                         <div className="flex justify-center mt-4 space-x-4">
                             <button className="bg-green-500 hover:bg-green-700 p-3 rounded-lg" onClick={toggleAddTaskMenu}>Cancel</button>
-                            <button className="bg-green-500 hover:bg-green-700 p-3 rounded-lg">Save</button>
+                            <button className="bg-green-500 hover:bg-green-700 p-3 rounded-lg" onClick={handleSubmit}>Save</button>
                         </div>
                     </div>
                 </div>
