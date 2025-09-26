@@ -6,9 +6,17 @@ const Task = ({task, onDelete}) => {
     const [completed, setCompleted] = useState(task.completed);
 
     function toggleTaskCompleted() {
-        setCompleted(!completed);
-        task.completed = completed;
-        console.log(updateTask(task.id, task));
+        const newCompleted = !completed;
+        setCompleted(newCompleted);
+
+        const updatedTask = {
+            ...task,
+            completed: newCompleted
+        };
+
+        console.log("Updated Task: ", updatedTask);
+
+        updateTask(task.id, updatedTask);
     }
 
     function handleDeleteTask() {
