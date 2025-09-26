@@ -38,7 +38,7 @@ const ListTasks = () => {
                     <Task task={task} onDelete={handleDeleteTask} />
                 )}
             </div>
-            <AddTask onAdd={handleAddTask} />
+            <AddTask onAddTask={handleAddTask} />
         </>
         
     )

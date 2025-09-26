@@ -1,7 +1,7 @@
 import { createTask } from "../../services/TaskService";
 import { useState } from "react";
 
-const AddTask = () => {
+const AddTask = ({onAddTask}) => {
 
     const [showAddTaskMenu, setShowAddTaskMenu] = useState(false);
     const [formData, setFormData] = useState({
@@ -12,7 +12,7 @@ const AddTask = () => {
 
     function toggleAddTaskMenu() {
         setShowAddTaskMenu(!showAddTaskMenu);
-        console.log(showAddTaskMenu)
+        console.log(showAddTaskMenu);
 
         if (showAddTaskMenu) {
             setFormData({
@@ -66,7 +66,7 @@ const AddTask = () => {
                 setErrors({});
                 setShowAddTaskMenu(false);
 
-                onTaskAdded();
+                onAddTask();
             }).catch(error => {
                 console.log(error);
             });
