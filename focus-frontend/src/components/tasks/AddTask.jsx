@@ -90,7 +90,12 @@ const AddTask = ({onAddTask}) => {
                             <input className="ml-1 border-blue-500 border-4 p-2" type="text" id="name" name="name" onChange={handleInputChange}></input>
                             <br></br>
                             <label htmlFor="description">Description:</label>
-                            <input className="ml-1 mt-2 border-blue-500 border-4 p-2" type="text" id="description" name="description" onChange={handleInputChange}></input>
+                            <input className="ml-1 mt-2 border-blue-500 border-4 p-2" type="text" id="description" name="description" onChange={handleInputChange} onKeyDown={(e) => {
+                                    if (e.key === "Enter") {
+                                        handleSubmit(e);
+                                    }
+                                }
+                            }></input>
                         </form>
                         <div className="flex justify-center mt-4 space-x-4">
                             <button className="bg-green-500 hover:bg-green-700 p-3 rounded-lg" onClick={toggleAddTaskMenu}>Cancel</button>
