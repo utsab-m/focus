@@ -38,7 +38,6 @@ const AddTask = ({onAddTask}) => {
     }
 
     const handleInputChange = (e) => {
-        console.log(e);
 
         const {name, value} = e.target;
         
@@ -87,7 +86,7 @@ const AddTask = ({onAddTask}) => {
                         <h2 className="text-2xl text-white mb-4">Add New Task</h2>
                         <form onSubmit={handleSubmit} >
                             <label htmlFor="name">Name:</label>
-                            <input className="ml-1 border-blue-500 border-4 p-2" type="text" id="name" name="name" onChange={handleInputChange}></input>
+                            <input className="backdrop-blur-sm ml-1 border-blue-500 border-4 p-2" type="text" id="name" name="name" onChange={handleInputChange}></input>
                             <br></br>
                             <label htmlFor="description">Description:</label>
                             <input className="ml-1 mt-2 border-blue-500 border-4 p-2" type="text" id="description" name="description" onChange={handleInputChange} onKeyDown={(e) => {

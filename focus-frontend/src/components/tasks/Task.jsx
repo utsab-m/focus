@@ -20,7 +20,10 @@ const Task = ({task, onDelete}) => {
     }
 
     function handleDeleteTask() {
-        onDelete(task.id);
+        if (window.confirm("Are you sure you want to delete this task?")) {
+            onDelete(task.id);
+        }
+        
     }
 
     return (
